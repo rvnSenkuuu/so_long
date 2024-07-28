@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: senku <senku@student.42.fr>                +#+  +:+       +#+         #
+#    By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 18:15:20 by senku            ###   ########.fr        #
+#    Updated: 2024/07/28 19:52:47 by tkara2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
+NAMEB		=	so_long_bonus
 
 SRCS_FILES	=	main.c \
 				error.c \
@@ -74,6 +75,9 @@ all:	$(NAME)
 $(NAME):	$(OBJS) $(LIBFT_LIB) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) -o $(NAME)
 
+$(NAMEB):	$(OBJSB) $(LIBFT_LIB) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJSB) $(LFLAGS) -o $(NAMEB)
+
 $(OBJS_PATH)%.o:	%.c
 	mkdir -p ${@D}
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -84,8 +88,7 @@ $(LIBFT_LIB):
 $(MLX_LIB):
 	@make -C $(MLX_PATH) --silent
 
-bonus:	$(OBJSB) $(LIBFT_LIB) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJSB) $(LFLAGS) -o $(NAME)
+bonus:	$(NAMEB)
 
 norm:
 	@norminette $(NORM_FLAG) $(SRCS) $(SRCSB) $(INC)
