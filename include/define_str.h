@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   define_str.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:37:31 by senku             #+#    #+#             */
-/*   Updated: 2024/07/28 18:51:20 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 19:42:13 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,16 @@
 
 # define SUCCESS 0
 # define FAILURE 1
-# define GAME_NAME "SO_LONG"
 # define IMG_SZ 64
 # define SCR_W 1920
 # define SCR_H 1080
+
+# define KEY_UP	(keycode == XK_w || keycode == XK_W || keycode == XK_Up)
+# define KEY_DOWN	(keycode == XK_s || keycode == XK_S || keycode == XK_Down)
+# define KEY_LEFT	(keycode == XK_a || keycode == XK_A || keycode == XK_Left)
+# define KEY_RIGHT	(keycode == XK_d || keycode == XK_D || keycode == XK_Right)
+
+# define GAME_NAME "SO_LONG"
 # define GAME_WON "You finished the game. Congratulation\n"
 # define GAME_LOSE "You've lost the game.\n"
 # define GAME_QUIT	"You quit the game.\n"
