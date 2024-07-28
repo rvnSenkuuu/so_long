@@ -6,12 +6,12 @@
 /*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:37:31 by senku             #+#    #+#             */
-/*   Updated: 2024/07/28 19:42:13 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/28 19:57:25 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEFINE_STR_H
-# define DEFINE_STR_H
+#ifndef SO_LONG_DEFINE_H
+# define SO_LONG_DEFINE_H
 
 # define SUCCESS 0
 # define FAILURE 1

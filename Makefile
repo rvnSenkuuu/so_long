@@ -6,7 +6,7 @@
 #    By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 19:55:00 by tkara2           ###   ########.fr        #
+#    Updated: 2024/07/28 19:57:51 by tkara2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRCSB_FILES	=	main_bonus.c \
 				flood_fill_bonus.c \
 				game_condition_bonus.c \
 
-INC_FILE	=	so_long.h define_str.h
+INC_FILE	=	so_long.h so_long_define.h
 
 SRCS_PATH	=	srcs/
 OBJS_PATH	=	.objs/

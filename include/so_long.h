@@ -6,7 +6,7 @@
 /*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:39:35 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 19:18:27 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/28 19:57:09 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../lib/libft/includes/libft.h"
 # include "../lib/mlx-linux/mlx.h"
-# include "define_str.h"
+# include "so_long_define.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdbool.h>
