@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:32:43 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/25 17:47:26 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:56:16 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	destroy_game(t_game *game)
 	}
 	if (game->mlx)
 	{
-		destroy_img(game);
+		if (game->imgs)
+			destroy_img(game);
 		mlx_loop_end(game->mlx);
 		if (game->mlx_window)
 			mlx_destroy_window(game->mlx, game->mlx_window);

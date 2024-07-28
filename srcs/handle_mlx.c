@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 15:20:58 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 15:58:47 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,26 @@ int	init_imgs(t_game *game)
 	return (SUCCESS);
 }
 
+static void	check_screen_size(t_game *game)
+{
+	game->scr_w = SCR_W;
+	game->scr_h = SCR_H;
+	if (game->scr_w < (game->map->width * IMG_SZ))
+		free_error_exit(game, E_MAP_WSZ);
+	if (game->scr_h < (game->map->height * IMG_SZ))
+		free_error_exit(game, E_MAP_HSZ);
+}
+
 void	init_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
-		destroy_game(game);
+		free_error_exit(game, E_MLX);
+	check_screen_size(game);
 	game->mlx_window = mlx_new_window(game->mlx, game->map->width * IMG_SZ,
 			game->map->height * IMG_SZ, GAME_NAME);
 	if (!game->mlx_window)
-		destroy_game(game);
+		free_error_exit(game, E_MLX_WIN);
 	if (init_imgs(game) == FAILURE)
 		destroy_img(game);
 	render_map(game);

@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:39:35 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 15:22:28 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 15:46:56 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define FAILURE 1
 # define GAME_NAME "SO_LONG"
 # define IMG_SZ 64
+# define SCR_W 900
+# define SCR_H 600
 # define GAME_WON "You finished the game. Congratulation\n"
 
 # define FLOOR	"./assets/floor.xpm"
@@ -46,8 +48,12 @@
 # define E_MAP_CHAR_NBR "Error\nMap contains more than 1 player or exit\n"
 # define E_MAP_NOT_RECTANGLE "Error\nInvalid map is not rectangular\n"
 # define E_MAP_PATH "Error\nNo path found to exit or collectibles\n"
+# define E_MAP_WSZ "Error\nThe map width is bigger than the sceen length"
+# define E_MAP_HSZ "Error\nThe map height is bigger than the sceen length"
 # define E_ALLOC "Error\nAllocation failed\n"
 # define E_INIT_IMG "Error\nWhile creating images\n"
+# define E_MLX "Error\nWhile initializing mlx\n"
+# define E_MLX_WIN "Error\nWhile creating mlx window\n"
 
 typedef struct s_img
 {
@@ -84,7 +90,8 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	int			game_end;
+	int			scr_w;
+	int			scr_h;
 	void		*mlx;
 	void		*mlx_window;
 	t_map		*map;
