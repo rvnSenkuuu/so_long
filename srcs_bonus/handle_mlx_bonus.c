@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 16:47:10 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 17:40:48 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ int	key_hook(int keycode, t_game *game)
 static void	check_imgs(t_game *game)
 {
 	if (!game->imgs->floor)
-		put_error_exit(E_INIT_IMG);
+		put_error_exit(E_INIT_F_IMG);
 	if (!game->imgs->wall)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_W_IMG);
 	if (!game->imgs->collec)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_C_IMG);
 	if (!game->imgs->player)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_P_IMG);
 	if (!game->imgs->player_l)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_PL_IMG);
 	if (!game->imgs->player_r)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_PR_IMG);
 	if (!game->imgs->player_u)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_PU_IMG);
 	if (!game->imgs->exit_o)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_EO_IMG);
 	if (!game->imgs->exit_c)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_EC_IMG);
 }
 
 int	init_imgs(t_game *game)

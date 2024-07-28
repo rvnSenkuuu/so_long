@@ -6,11 +6,11 @@
 #    By: senku <senku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 16:46:25 by senku            ###   ########.fr        #
+#    Updated: 2024/07/28 18:15:20 by senku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	so_long
+NAME		=	so_long
 
 SRCS_FILES	=	main.c \
 				error.c \
@@ -25,8 +25,9 @@ SRCS_FILES	=	main.c \
 				render_game.c \
 				set_game_data.c \
 				flood_fill.c \
+				game_condition.c \
 
-SRCSB_FILES	=		main_bonus.c \
+SRCSB_FILES	=	main_bonus.c \
 				error_bonus.c \
 				free_utils_bonus.c \
 				check_argv_bonus.c \
@@ -39,8 +40,9 @@ SRCSB_FILES	=		main_bonus.c \
 				render_game_bonus.c \
 				set_game_data_bonus.c \
 				flood_fill_bonus.c \
+				game_condition_bonus.c \
 
-INC_FILE	=	so_long.h
+INC_FILE	=	so_long.h define_str.h
 
 SRCS_PATH	=	srcs/
 OBJS_PATH	=	.objs/
@@ -60,10 +62,10 @@ SRCSB		=	$(addprefix $(SRCSB_PATH), $(SRCSB_FILES))
 OBJSB		=	$(addprefix $(OBJS_PATH), $(SRCSB:.c=.o))
 INC			=	$(addprefix $(INC_PATH), $(INC_FILE))
 
-CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -g3 -I$(INC_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
-LFLAGS	=	-L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm
-RM		=	rm -rf
+CC			=	cc
+CFLAGS		=	-Wall -Werror -Wextra -g3 -I$(INC_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
+LFLAGS		=	-L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm
+RM			=	rm -rf
 
 NORM_FLAG	=	-R CheckForbiddenSourceHeader -R CheckDefine
 
