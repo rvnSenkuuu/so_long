@@ -6,7 +6,7 @@
 #    By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 19:52:47 by tkara2           ###   ########.fr        #
+#    Updated: 2024/07/28 19:55:00 by tkara2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ clean:
 	@echo "[DONE] Objects files deletion..."
 
 fclean:	clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAMEB)
 	@make fclean -C $(LIBFT_PATH)
 	@echo "[DONE] so_long deletion..."
 
