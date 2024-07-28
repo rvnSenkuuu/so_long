@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 11:01:21 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/24 10:39:54 by tkara2           ###   ########.fr       */
+/*   Created: 2024/07/19 17:37:14 by tkara2            #+#    #+#             */
+/*   Updated: 2024/07/24 18:05:48 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_argv(int argc, char **argv)
+t_map	*init_map(char *file)
 {
-	const char	*file_extension;
+	char	**map;
+	t_map	*game_map;
 
-	if (argc < 2)
-		put_error_exit(E_USAGE);
-	file_extension = ft_strrchr(argv[1], '.');
-	if (!file_extension || ft_strncmp(file_extension, ".ber", 5) != 0)
-		put_error_exit(E_WRONG_EXT);
+	map = read_map(file);
+	check_map(map);
+	game_map = set_map_data(map);
+	check_map_path(game_map);
+	return (game_map);
 }

@@ -3,24 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+         #
+#    By: senku <senku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/19 19:22:13 by tkara2           ###   ########.fr        #
+#    Updated: 2024/07/28 15:18:34 by senku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 
 SRCS_FILES	=	main.c \
-				put_error.c \
+				error.c \
 				free_utils.c \
 				check_argv.c \
-				check_map_valid.c \
+				check_map.c \
 				check_map_utils.c \
 				read_map.c \
-				init_game_structure.c \
+				init_map.c \
+				handle_mlx.c \
+				player_move.c \
+				render_game.c \
 				set_game_data.c \
+				flood_fill.c \
 
 INC_FILE	=	so_long.h
 
@@ -39,7 +43,7 @@ OBJS		=	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 INC			=	$(addprefix $(INC_PATH), $(INC_FILE))
 
 CC		=	cc
-CFLAGS	=	-Wall -Werror -Wextra -I$(INC_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
+CFLAGS	=	-Wall -Werror -Wextra -g3 -I$(INC_PATH) -I$(LIBFT_PATH) -I$(MLX_PATH)
 LFLAGS	=	-L$(LIBFT_PATH) -lft -L$(MLX_PATH) -lmlx_Linux -lXext -lX11 -lm
 RM		=	rm -rf
 
@@ -61,8 +65,10 @@ $(MLX_LIB):
 	@make -C $(MLX_PATH) --silent
 
 norm:
-	@make norm -C $(LIBFT_PATH)
 	@norminette $(NORM_FLAG) $(SRCS) $(INC)
+
+lftnorm:
+	@make norm -C $(LIBFT_PATH)
 
 clean:
 	$(RM) $(OBJS_PATH)

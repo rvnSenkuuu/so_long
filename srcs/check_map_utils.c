@@ -6,11 +6,11 @@
 /*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 15:16:44 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/19 15:17:17 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/23 10:26:05 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../include/so_long.h"
+#include "../include/so_long.h"
 
 int	map_is_closed(char **map)
 {
@@ -20,19 +20,19 @@ int	map_is_closed(char **map)
 	i = -1;
 	while (map[0][++i])
 		if (map[0][i] != '1')
-			return (EXIT_SUCCESS);
+			return (FAILURE);
 	j = 0;
 	while (map[++j])
 		if ((map[j][0] != '1') || (map[j][i - 1] != '1'))
-			return (EXIT_SUCCESS);
+			return (FAILURE);
 	i = 0;
 	while (map[j - 1][i])
 	{
 		if (map[j - 1][i] != '1')
-			return (EXIT_SUCCESS);
+			return (FAILURE);
 		i++;
 	}
-	return (EXIT_FAILURE);
+	return (SUCCESS);
 }
 
 int	map_is_rectangle(char **map)
@@ -52,10 +52,10 @@ int	map_is_rectangle(char **map)
 		while (map[i][j])
 			j++;
 		if (first_size != j)
-			return (EXIT_SUCCESS);
+			return (FAILURE);
 		i++;
 	}
-	return (EXIT_FAILURE);
+	return (SUCCESS);
 }
 
 static int	valid_char(char c)
@@ -79,12 +79,12 @@ int	check_valid_char(char **map)
 		while (map[i][j])
 		{
 			if (!valid_char(map[i][j]))
-				return (EXIT_SUCCESS);
+				return (FAILURE);
 			j++;
 		}
 		i++;
 	}
-	return (EXIT_FAILURE);
+	return (SUCCESS);
 }
 
 int	check_enough_char(char **map)
@@ -111,6 +111,6 @@ int	check_enough_char(char **map)
 		}
 	}
 	if (player != 1 || exit != 1 || collectible < 1)
-		return (EXIT_SUCCESS);
-	return (EXIT_FAILURE);
+		return (FAILURE);
+	return (SUCCESS);
 }

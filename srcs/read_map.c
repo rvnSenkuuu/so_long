@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 10:47:04 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/18 12:43:04 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/28 15:19:38 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	get_map_height(char *map)
 	height = 0;
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
-		put_error(ERROR_OPEN_FILE);
+		put_error_exit(E_OPEN_FILE);
 	while (read(fd, &buffer, 1))
 	{
 		if (buffer == '\n')
@@ -42,9 +42,7 @@ char	**read_map(char *file)
 	fd = open(file, O_RDONLY);
 	map_height = get_map_height(file);
 	map = ft_calloc(map_height + 1, sizeof(char *));
-	if (!map)
-		return (NULL);
-	while(i < map_height)
+	while (i < map_height)
 	{
 		map[i] = get_next_line(fd);
 		i++;

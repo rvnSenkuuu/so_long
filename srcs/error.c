@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_argv.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 11:01:21 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/24 10:39:54 by tkara2           ###   ########.fr       */
+/*   Created: 2024/07/17 10:40:21 by tkara2            #+#    #+#             */
+/*   Updated: 2024/07/28 15:08:39 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	check_argv(int argc, char **argv)
+void	put_error_exit(char *error_str)
 {
-	const char	*file_extension;
+	write(STDERR_FILENO, error_str, ft_strlen(error_str));
+	exit(FAILURE);
+}
 
-	if (argc < 2)
-		put_error_exit(E_USAGE);
-	file_extension = ft_strrchr(argv[1], '.');
-	if (!file_extension || ft_strncmp(file_extension, ".ber", 5) != 0)
-		put_error_exit(E_WRONG_EXT);
+void	free_error_exit(t_game *game, char *error_str)
+{
+	write(STDERR_FILENO, error_str, ft_strlen(error_str));
+	destroy_game(game);
+	exit(FAILURE);
 }
