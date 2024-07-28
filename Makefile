@@ -6,7 +6,7 @@
 #    By: senku <senku@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 15:18:34 by senku            ###   ########.fr        #
+#    Updated: 2024/07/28 16:46:25 by senku            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,27 @@ SRCS_FILES	=	main.c \
 				set_game_data.c \
 				flood_fill.c \
 
+SRCSB_FILES	=		main_bonus.c \
+				error_bonus.c \
+				free_utils_bonus.c \
+				check_argv_bonus.c \
+				check_map_bonus.c \
+				check_map_utils_bonus.c \
+				read_map_bonus.c \
+				init_map_bonus.c \
+				handle_mlx_bonus.c \
+				player_move_bonus.c \
+				render_game_bonus.c \
+				set_game_data_bonus.c \
+				flood_fill_bonus.c \
+
 INC_FILE	=	so_long.h
 
 SRCS_PATH	=	srcs/
 OBJS_PATH	=	.objs/
 INC_PATH	=	include/
+
+SRCSB_PATH	=	srcs_bonus/
 
 LIBFT_PATH	=	./lib/libft/
 LIBFT_LIB	=	$(LIBFT_PATH)libft.a
@@ -40,6 +56,8 @@ MLX_LIB		=	$(MLX_PATH)libmlx_Linux.a
 
 SRCS		=	$(addprefix $(SRCS_PATH), $(SRCS_FILES))
 OBJS		=	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
+SRCSB		=	$(addprefix $(SRCSB_PATH), $(SRCSB_FILES))
+OBJSB		=	$(addprefix $(OBJS_PATH), $(SRCSB:.c=.o))
 INC			=	$(addprefix $(INC_PATH), $(INC_FILE))
 
 CC		=	cc
@@ -64,8 +82,11 @@ $(LIBFT_LIB):
 $(MLX_LIB):
 	@make -C $(MLX_PATH) --silent
 
+bonus:	$(OBJSB) $(LIBFT_LIB) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJSB) $(LFLAGS) -o $(NAME)
+
 norm:
-	@norminette $(NORM_FLAG) $(SRCS) $(INC)
+	@norminette $(NORM_FLAG) $(SRCS) $(SRCSB) $(INC)
 
 lftnorm:
 	@make norm -C $(LIBFT_PATH)

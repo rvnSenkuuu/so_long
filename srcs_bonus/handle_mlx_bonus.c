@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_mlx.c                                       :+:      :+:    :+:   */
+/*   handle_mlx_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 16:46:58 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 16:47:10 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	key_hook(int keycode, t_game *game)
 {
-	if (keycode == XK_w || keycode == XK_W)
+	if (keycode == XK_w || keycode == XK_W || keycode == XK_Up)
 		move_player_up(game, game->map);
-	if (keycode == XK_s || keycode == XK_S)
+	if (keycode == XK_s || keycode == XK_S || keycode == XK_Down)
 		move_player_down(game, game->map);
-	if (keycode == XK_d || keycode == XK_D)
+	if (keycode == XK_d || keycode == XK_D || keycode == XK_Right)
 		move_player_right(game, game->map);
-	if (keycode == XK_a || keycode == XK_A)
+	if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
 		move_player_left(game, game->map);
 	if (keycode == XK_Escape)
 		destroy_game(game);
@@ -38,7 +38,15 @@ static void	check_imgs(t_game *game)
 		free_error_exit(game, E_INIT_IMG);
 	if (!game->imgs->player)
 		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->player_l)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->player_r)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->player_u)
+		free_error_exit(game, E_INIT_IMG);
 	if (!game->imgs->exit_o)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->exit_c)
 		free_error_exit(game, E_INIT_IMG);
 }
 
@@ -55,7 +63,15 @@ int	init_imgs(t_game *game)
 			&game->imgs->width, &game->imgs->height);
 	game->imgs->player = mlx_xpm_file_to_image(game->mlx, PLAYER,
 			&game->imgs->width, &game->imgs->height);
+	game->imgs->player_u = mlx_xpm_file_to_image(game->mlx, PLAYER_U,
+			&game->imgs->width, &game->imgs->height);
+	game->imgs->player_l = mlx_xpm_file_to_image(game->mlx, PLAYER_L,
+			&game->imgs->width, &game->imgs->height);
+	game->imgs->player_r = mlx_xpm_file_to_image(game->mlx, PLAYER_R,
+			&game->imgs->width, &game->imgs->height);
 	game->imgs->exit_o = mlx_xpm_file_to_image(game->mlx, EXIT_O,
+			&game->imgs->width, &game->imgs->height);
+	game->imgs->exit_c = mlx_xpm_file_to_image(game->mlx, EXIT_C,
 			&game->imgs->width, &game->imgs->height);
 	check_imgs(game);
 	return (SUCCESS);
