@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mlx_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 17:40:48 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 19:16:02 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == XK_a || keycode == XK_A || keycode == XK_Left)
 		move_player_left(game, game->map);
 	if (keycode == XK_Escape)
-		destroy_game(game);
-	render_map(game);
+		game_condition(game, GAME_QUIT);
+	render_map_bonus(game, keycode);
 	return (SUCCESS);
 }
 
@@ -99,7 +99,6 @@ void	init_mlx(t_game *game)
 		free_error_exit(game, E_MLX_WIN);
 	if (init_imgs(game) == FAILURE)
 		destroy_img(game);
-	render_map(game);
 	mlx_key_hook(game->mlx_window, key_hook, game);
 	mlx_hook(game->mlx_window, DestroyNotify, StructureNotifyMask,
 		destroy_game, game);

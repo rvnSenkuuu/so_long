@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:54:03 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 18:13:43 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 18:57:24 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_player_up(t_game *game, t_map *map)
 	map->map[map->player->x + 1][map->player->y] = '0';
 	if (map->count_collectible == 0
 		&& map->map[map->player->x - 1][map->player->y] == 'E')
-		game_win(game);
+		game_condition(game, GAME_WON);
 }
 
 void	move_player_down(t_game *game, t_map *map)
@@ -49,7 +49,7 @@ void	move_player_down(t_game *game, t_map *map)
 	map->map[map->player->x - 1][map->player->y] = '0';
 	if (map->count_collectible == 0
 		&& map->map[map->player->x + 1][map->player->y] == 'E')
-		game_win(game);
+		game_condition(game, GAME_WON);
 }
 
 void	move_player_right(t_game *game, t_map *map)
@@ -69,7 +69,7 @@ void	move_player_right(t_game *game, t_map *map)
 	map->map[map->player->x][map->player->y - 1] = '0';
 	if (map->count_collectible == 0
 		&& map->map[map->player->x][map->player->y + 1] == 'E')
-		game_win(game);
+		game_condition(game, GAME_WON);
 }
 
 void	move_player_left(t_game *game, t_map *map)
@@ -89,5 +89,5 @@ void	move_player_left(t_game *game, t_map *map)
 	map->map[map->player->x][map->player->y + 1] = '0';
 	if (map->count_collectible == 0
 		&& map->map[map->player->x][map->player->y - 1] == 'E')
-		game_win(game);
+		game_condition(game, GAME_WON);
 }

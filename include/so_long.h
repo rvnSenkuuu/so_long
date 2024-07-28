@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:39:35 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 18:10:38 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 19:18:27 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ t_map	*set_map_data(char **map);
 void	init_mlx(t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		render_map(t_game *game);
+int		render_map_bonus(t_game *game, int keycode);
 
 //Handle move player
 void	move_player_up(t_game *game, t_map *map);
@@ -103,7 +104,6 @@ void	move_player_right(t_game *game, t_map *map);
 void	move_player_left(t_game *game, t_map *map);
 
 //Game condition
-void	game_win(t_game *game);
-void	game_lose(t_game *game);
+void	game_condition(t_game *game, char *game_state);
 
 #endif

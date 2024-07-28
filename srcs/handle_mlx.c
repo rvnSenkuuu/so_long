@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 16:46:58 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 18:57:08 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	key_hook(int keycode, t_game *game)
 	if (keycode == XK_a || keycode == XK_A)
 		move_player_left(game, game->map);
 	if (keycode == XK_Escape)
-		destroy_game(game);
+		game_condition(game, GAME_QUIT);
 	render_map(game);
 	return (SUCCESS);
 }
@@ -31,15 +31,15 @@ int	key_hook(int keycode, t_game *game)
 static void	check_imgs(t_game *game)
 {
 	if (!game->imgs->floor)
-		put_error_exit(E_INIT_IMG);
+		put_error_exit(E_INIT_F_IMG);
 	if (!game->imgs->wall)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_W_IMG);
 	if (!game->imgs->collec)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_C_IMG);
 	if (!game->imgs->player)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_P_IMG);
 	if (!game->imgs->exit_o)
-		free_error_exit(game, E_INIT_IMG);
+		free_error_exit(game, E_INIT_EO_IMG);
 }
 
 int	init_imgs(t_game *game)

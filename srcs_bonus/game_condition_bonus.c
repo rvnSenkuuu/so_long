@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   game_condition_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 18:05:39 by senku             #+#    #+#             */
-/*   Updated: 2024/07/28 18:07:49 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 19:00:04 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	game_win(t_game *game)
+void	game_condition(t_game *game, char *game_state)
 {
-	ft_printf(GAME_WON);
-	destroy_game(game);
-}
-
-void	game_lose(t_game *game)
-{
-	ft_printf(GAME_LOSE);
+	write(STDERR_FILENO, game_state, ft_strlen(game_state));
 	destroy_game(game);
 }
