@@ -6,7 +6,7 @@
 /*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 18:05:18 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 15:58:47 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/28 16:18:22 by senku            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,20 @@ int	key_hook(int keycode, t_game *game)
 	return (SUCCESS);
 }
 
+static void check_imgs(t_game *game)
+{
+	if (!game->imgs->floor)
+		put_error_exit(E_INIT_IMG);
+	if (!game->imgs->wall)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->collec)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->player)
+		free_error_exit(game, E_INIT_IMG);
+	if (!game->imgs->exit_o)
+		free_error_exit(game, E_INIT_IMG);
+}
+
 int	init_imgs(t_game *game)
 {
 	game->imgs = ft_calloc(1, sizeof(t_img));
@@ -35,24 +49,15 @@ int	init_imgs(t_game *game)
 		return (FAILURE);
 	game->imgs->floor = mlx_xpm_file_to_image(game->mlx, FLOOR,
 			&game->imgs->width, &game->imgs->height);
-	if (!game->imgs->floor)
-		put_error_exit(E_INIT_IMG);
 	game->imgs->wall = mlx_xpm_file_to_image(game->mlx, WALL,
 			&game->imgs->width, &game->imgs->height);
-	if (!game->imgs->wall)
-		free_error_exit(game, E_INIT_IMG);
 	game->imgs->collec = mlx_xpm_file_to_image(game->mlx, COLLEC,
 			&game->imgs->width, &game->imgs->height);
-	if (!game->imgs->collec)
-		free_error_exit(game, E_INIT_IMG);
 	game->imgs->player = mlx_xpm_file_to_image(game->mlx, PLAYER,
 			&game->imgs->width, &game->imgs->height);
-	if (!game->imgs->player)
-		free_error_exit(game, E_INIT_IMG);
 	game->imgs->exit_o = mlx_xpm_file_to_image(game->mlx, EXIT_O,
 			&game->imgs->width, &game->imgs->height);
-	if (!game->imgs->exit_o)
-		free_error_exit(game, E_INIT_IMG);
+	check_imgs(game);
 	return (SUCCESS);
 }
 
