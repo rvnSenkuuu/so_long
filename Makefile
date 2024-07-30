@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+         #
+#    By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/28 19:57:51 by tkara2           ###   ########.fr        #
+#    Updated: 2024/07/29 10:53:57 by tkara2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS_FILES	=	main.c \
 				handle_mlx.c \
 				player_move.c \
 				render_game.c \
-				set_game_data.c \
 				flood_fill.c \
 				game_condition.c \
 
@@ -36,10 +35,10 @@ SRCSB_FILES	=	main_bonus.c \
 				check_map_utils_bonus.c \
 				read_map_bonus.c \
 				init_map_bonus.c \
+				init_imgs.c \
 				handle_mlx_bonus.c \
 				player_move_bonus.c \
 				render_game_bonus.c \
-				set_game_data_bonus.c \
 				flood_fill_bonus.c \
 				game_condition_bonus.c \
 

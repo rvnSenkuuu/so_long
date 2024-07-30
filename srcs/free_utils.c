@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: senku <senku@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:32:43 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 15:56:16 by senku            ###   ########.fr       */
+/*   Updated: 2024/07/29 15:01:18 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,18 @@ void	destroy_img(t_game *game)
 	free(game->imgs);
 }
 
+void	destroy_map(t_map *map)
+{
+	free_ptrs((void **)map->map);
+	free_ptrs((void **)map->copy);
+	free(map->player);
+	free(map);
+}
+
 int	destroy_game(t_game *game)
 {
 	if (game->map)
-	{
-		free_ptrs((void **)game->map->map);
-		free_ptrs((void **)game->map->copy);
-		free(game->map->player);
-		free(game->map);
-	}
+		destroy_map(game->map);
 	if (game->mlx)
 	{
 		if (game->imgs)

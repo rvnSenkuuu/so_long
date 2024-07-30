@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/16 11:39:35 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/28 19:57:09 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/07/29 18:56:11 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_img
 	void	*collec;
 	void	*exit_c;
 	void	*exit_o;
+	void	*sign;
+	void	*bomb;
 }				t_img;
 
 typedef struct s_player
@@ -67,13 +69,15 @@ typedef struct s_game
 
 //Utils
 void	put_error_exit(char *error_str);
+void	error_close_exit(char *error_str, int fd);
 void	free_ptrs(void **ptrs);
 void	free_error_exit(t_game *game, char *error_str);
+void	free_ptrs_exit(char **map);
 int		destroy_game(t_game *game);
+void	destroy_map(t_map *map);
 void	destroy_img(t_game *game);
 void	check_argv(int argc, char **argv);
 void	get_player_pos(char **map, int *x, int *y);
-void	display_map(t_map *map);
 
 //File reading functions
 char	**read_map(char *file);
@@ -93,6 +97,7 @@ t_map	*set_map_data(char **map);
 
 //Handle mlx
 void	init_mlx(t_game *game);
+int		init_imgs(t_game *game);
 int		key_hook(int keycode, t_game *game);
 int		render_map(t_game *game);
 int		render_map_bonus(t_game *game, int keycode);
