@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 17:54:03 by tkara2            #+#    #+#             */
-/*   Updated: 2024/07/29 18:59:24 by tkara2           ###   ########.fr       */
+/*   Updated: 2024/08/15 22:50:03 by tkara2           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_player_up(t_game *game, t_map *map)
 	else if (map->map[map->player->x - 1][map->player->y] == 'C')
 		map->count_collectible--;
 	++map->player->step_count;
-	ft_printf("Conteur de pas: %d\n", map->player->step_count);
+	ft_printf("Step counts: %d\n", map->player->step_count);
 	map->player->x--;
 	map->map[map->player->x][map->player->y] = 'P';
 	map->map[map->player->x + 1][map->player->y] = '0';
@@ -46,7 +46,7 @@ void	move_player_down(t_game *game, t_map *map)
 	else if (map->map[map->player->x + 1][map->player->y] == 'C')
 		map->count_collectible--;
 	++map->player->step_count;
-	ft_printf("Conteur de pas: %d\n", map->player->step_count);
+	ft_printf("Step counts: %d\n", map->player->step_count);
 	map->player->x++;
 	map->map[map->player->x][map->player->y] = 'P';
 	map->map[map->player->x - 1][map->player->y] = '0';
@@ -66,7 +66,7 @@ void	move_player_right(t_game *game, t_map *map)
 	else if (map->map[map->player->x][map->player->y + 1] == 'C')
 		map->count_collectible--;
 	++map->player->step_count;
-	ft_printf("Conteur de pas: %d\n", map->player->step_count);
+	ft_printf("Step counts: %d\n", map->player->step_count);
 	map->player->y++;
 	map->map[map->player->x][map->player->y] = 'P';
 	map->map[map->player->x][map->player->y - 1] = '0';
@@ -86,7 +86,7 @@ void	move_player_left(t_game *game, t_map *map)
 	else if (map->map[map->player->x][map->player->y - 1] == 'C')
 		map->count_collectible--;
 	++map->player->step_count;
-	ft_printf("Counteur de pas: %d\n", map->player->step_count);
+	ft_printf("Step counts: %d\n", map->player->step_count);
 	map->player->y--;
 	map->map[map->player->x][map->player->y] = 'P';
 	map->map[map->player->x][map->player->y + 1] = '0';
