@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tkara2 <tkara2@student.42.fr>              +#+  +:+       +#+         #
+#    By: tkara2 <tkara2@student.42.ft>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 11:36:41 by tkara2            #+#    #+#              #
-#    Updated: 2024/07/29 10:53:57 by tkara2           ###   ########.fr        #
+#    Updated: 2024/09/17 00:37:04 by tkara2           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ fclean:	clean
 	@make fclean -C $(LIBFT_PATH)
 	@echo "[DONE] so_long deletion..."
 
-re:	fclean all
+re:	fclean
+	make all
 	@echo "[DONE] so_long recompiled..."
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re bonus norm
